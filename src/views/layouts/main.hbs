@@ -1,42 +1,54 @@
+<!DOCTYPE html>
 <html lang="en">
 
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/styles.css" />
     <title>{{title}}</title>
-    <link rel="stylesheet" href="/css/styles.css" />
-  </head>
+</head>
 
-  <body>
-    <header class="header">
-      <nav>
-        <img src="/images/logo.jpg" class="logo" />
-        <ul>
-          <li><a href="/">Home</a></li>
-          <li><a href="#">All Games Code</a></li>
-          <li><a href="#">Search</a></li>
-          {{#if isAuthenticated}}
-          {{!-- user --}}
-          <li><a href="#">Create Game Offer</a></li>
-          <li><a href="/auth/logout">Logout</a></li>
-          {{else}}
-          {{!-- guest --}}
-          <li><a href="/auth/login">Login</a></li>
-          <li><a href="/auth/register">Register</a></li>
-          {{/if}}
-        </ul>
-      </nav>
-    </header>
+<body>
 
-   
-        {{{body}}}
-    
+    <!-- <div>
+        <div class="errorContainer">
+            <p>Error</p>
+        </div>
+    </div> -->
 
-    <footer>
-      <p>Back-End 2023</p>
-    </footer>
+    <div id="wrapper">
+        <header>
+            <!-- Navigation -->
+            <nav>
+                <div>
+                    <a href="/">Home</a>
+                    <a href="/treasure/catalog">Dashboard</a>
+                    <a href="/treasure/search">Search</a>
+                </div>
 
-  </body>
+                <!-- Logged-in users -->
+                <div class="user">
+                    <a href="/treasure/create">Add Stones</a>
+                    <a href="/auth/logout">Logout</a>
+                </div>
+
+                <!-- Guest users -->
+                <div class="guest">
+                    <a href="/auth/login">Login</a>
+                    <a href="/auth/register">Register</a>
+                </div>
+            </nav>
+        </header>
+
+        <main class="home">
+           {{{body}}}
+        </main>
+
+        <footer>
+            <p>@EarthTreasureVaul</p>
+        </footer>
+    </div>
+</body>
 
 </html>
