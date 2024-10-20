@@ -19,19 +19,19 @@ const stoneSchema = new Schema({
   image: {
     type: String,
     required: [true, "Image is required!"],
-    validator: [/^https?:\/\//, "Should start with http:// or https://"]
+    validator: [/^https?:\/\//, "Should start with http:// or https://"],
   },
   location: {
     type: String,
     required: [true, "Location is required!"],
-    minLength: [5, "Should be at least 5 char!"],
-    maxLength: [15, "Should be max 15 chars!"],
+    minLength: [5, "Location should be at least 5 char!"],
+    maxLength: [15, "Location should be max 15 chars!"],
   },
   formula: {
     type: String,
     required: [true, "Formula is required!"],
-    minLength: [3, "Should be at least 3 char!"],
-    maxLength: [30, "Should be max 30 chars!"],
+    minLength: [3, "Formula should be at least 3 char!"],
+    maxLength: [30, "Formula should be max 30 chars!"],
   },
   description: {
     type: String,
