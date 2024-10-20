@@ -103,24 +103,32 @@ router.get("/:stoneId/edit", async (req, res) => {
     res.render("stones/edit", { title: "Edit Page", stone });
   } catch (err) {
     const error = getErrorMessage(err);
-     res.render("stones/edit", { title: "Edit Page", error });
+    res.render("stones/edit", { title: "Edit Page", error });
   }
 });
 
-router.post('/:stoneId/edit',async (req, res) => {
+router.post("/:stoneId/edit", async (req, res) => {
   const stoneId = req.params.stoneId;
   const stoneData = req.body;
 
   try {
     await stoneService.edit(stoneId, stoneData);
-  
-    res.redirect(`/treasure/${stoneId}/details`,);
-    
+
+    res.redirect(`/treasure/${stoneId}/details`);
   } catch (err) {
     const error = getErrorMessage(err);
-     res.render("stones/edit", { title: "Edit Page",  stone: stoneData, error, });
+    res.render("stones/edit", { title: "Edit Page", stone: stoneData, error });
   }
+});
 
+/*#############################
+########### SEARCH #############
+################################*/
+
+router.get("/search", async (req, res) => {
+  const filter = req.query;
+  const stones = await stoneService.getAll(filter).lean()
+  res.render("stones/search", {stones, filter});
 });
 
 export default router;

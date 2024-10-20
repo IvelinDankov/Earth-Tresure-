@@ -4,8 +4,14 @@ const create = (data, userId) => {
   return Stones.create({ ...data, owner: userId });
 };
 
-const getAll = () => {
-  return Stones.find();
+const getAll = (filter = {}) => {
+  let query = Stones.find();
+
+  if (filter.name) {
+    query.find({ name: { $regex: filter.name, $options: 'i' } });
+  }
+
+  return query;
 };
 
 const getOne = (id) => {
@@ -21,7 +27,7 @@ const remove = (id) => {
 };
 
 const edit = (stoneId, stoneData) => {
-  return Stones.findByIdAndUpdate(stoneId, stoneData, {runValidators: true});
+  return Stones.findByIdAndUpdate(stoneId, stoneData, { runValidators: true });
 };
 
 export default {
