@@ -1,6 +1,7 @@
 import { Router } from "express";
 import authService from "../services/authService.js";
 import { getErrorMessage } from "../util/getErrMsg.js";
+import { isAuth } from "../middlewares/authMiddleware.js";
 
 const router = Router();
 
@@ -62,7 +63,7 @@ router.post("/login", async (req, res) => {
 ####### LOGOUT ###
 ###################*/
 
-router.get("/logout", (req, res) => {
+router.get("/logout", isAuth, (req, res) => {
   res.clearCookie("auth");
 
   res.redirect("/");
