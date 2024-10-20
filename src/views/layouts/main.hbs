@@ -11,11 +11,13 @@
 
 <body>
 
-    <!-- <div>
+    {{#if error}}
+    <div>
         <div class="errorContainer">
-            <p>Error</p>
+            <p>{{error}}</p>
         </div>
-    </div> -->
+    </div> 
+    {{/if}}
 
     <div id="wrapper">
         <header>
@@ -28,16 +30,18 @@
                 </div>
 
                 <!-- Logged-in users -->
+                {{#if isAuthenticated}}
                 <div class="user">
                     <a href="/treasure/create">Add Stones</a>
                     <a href="/auth/logout">Logout</a>
                 </div>
-
+                    {{else}}
                 <!-- Guest users -->
                 <div class="guest">
                     <a href="/auth/login">Login</a>
                     <a href="/auth/register">Register</a>
                 </div>
+                {{/if}}
             </nav>
         </header>
 
